@@ -10,18 +10,19 @@ GET http://localhost:3000/api/users/1
 
 DELETE  http://localhost:3000/api/users/1
 
+
 ###
 POST http://localhost:3000/api/users
 Content-Type: application/json
 
 {
-  "firstName": "Donald",
-  "lastName": "Christian",
-  "handle": "newpaltz_benevolent",
-  "password": "hugo",
-  "email": "jhon@doe.com",
-  "pic": "https://randomuser.me/api/portraits/men/2.jpg"
-}
+  "firstName": "Mounika",
+  "lastName": "Mouni",
+  "handle": "Mounika",
+  "password": "password",
+  "email": "mounika@gmail.com",
+  "pic": "https://randomuser.me/api/portraits/men/1.jpg"
+  }
 
 ###
 PATCH http://localhost:3000/api/users/2
