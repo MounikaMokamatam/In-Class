@@ -1,14 +1,23 @@
-const http = require('http');
+const express = require('express');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const usersController = require('./controllers/users');
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+const app = express()
+const port = process.env.PORT || 3000;
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+console.log(process.env);
+
+app
+    
+    .use('/', express.static(__dirname + '/public/')) 
+
+    .use(express.json())
+
+    .get('/api/', (req, res) => {
+        res.send('You are at the root of API. For the best class ever-' + process.env.BEST_CLASS_EVER);
+    })
+    .use('/api/users', usersController)
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})

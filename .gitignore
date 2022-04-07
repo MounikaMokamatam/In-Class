@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/vuejs,node,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=vuejs,node,visualstudiocode
 
+
+server/public
+
 ### Node ###
 # Logs
 logs
