@@ -1,29 +1,30 @@
 let hieghstId = 3;
 const bcrypt = require ('bcrypt');
+const mongo = require('./mongo');
 
 const list = [
     {
-        firstName: 'Naveena',
-        lastName: 'Kota',
-        handle: 'naveena',
+        firstName: 'Mounika',
+        lastName: 'Mouni',
+        handle: 'Mounika',
         password: 'password',
-        email: 'naveenakota14@gmail.com',
+        email: 'Mounika@gmail.com',
         pic: 'https://randomuser.me/api/portraits/men/1.jpg',
         id: 1,
     },
     {
-        firstName: 'Yash',
-        lastName: 'Ghatge',
-        handle: '@yash',
+        firstName: 'Surya',
+        lastName: 'Narayanan',
+        handle: '@Surya',
         password: 'password',
-        email: 'yash14@gmail.com',
+        email: 'Surya@gmail.com',
         pic: 'https://randomuser.me/api/portraits/men/2.jpg',
         id: 2,
     },
     {
         firstName: 'Bharath',
         lastName: 'Rongali',
-        handle: '@nBharath',
+        handle: '@Bharath',
         password: 'password',
         email: 'rss14@gmail.com',
         pic: 'https://randomuser.me/api/portraits/men/3.jpg',
