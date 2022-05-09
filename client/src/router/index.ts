@@ -4,7 +4,7 @@ import Home from '../pages/Home.vue';
 //import Messages from '../pages/Messages.vue';
 import Generic from '../pages/Generic.vue';
 import Login from '../pages/Login.vue';
-import session from "../models/session";
+import { useSession } from "../models/session";
 
 // 2. Define some routes
 // Each route should map to a component.
@@ -15,8 +15,9 @@ const routes: RouteRecordRaw[] = [
   { path: '/contact', component: Generic, props: { title: 'Contact Page!' } },
   { path: '/login', component: Login },
   { path: '/signup', component: Generic, props: { title: 'Signup Page!' } },
-  { path: '/wall', component: () => import('../pages/Wall.vue') },
+  { path: '/wall/:handle?', component: () => import('../pages/Wall.vue') },
   { path: '/hidden', component: Generic, props: { title: 'You reached the hidden Page!' } },
+  { path: '/weather', component: () => import('../pages/Weather.vue') },
 ]
 
 // 3. Create the router instance and pass the `routes` option
@@ -30,6 +31,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
+    const session = useSession();
+
     if(session.destinationUrl == null && to.path != '/login') {
         session.destinationUrl = to.path;
     }
@@ -37,7 +40,7 @@ router.beforeEach((to, from) => {
     const protectedUrls = ['/messages', '/wall', '/feed', '/hidden'];
     console.log({ protectedUrls });
 
-    if (protectedUrls.includes(to.path)) { // list of paths that require login
+    if (protectedUrls.includes(to.path.toLowerCase())) { // list of paths that require login
         console.log('requires login');
         if (!session.user) {
             return '/login';
